@@ -1,0 +1,117 @@
+body{
+    background-color: antiquewhite;
+}
+*{
+    margin: 0;;
+    padding: 0;
+}
+nav{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 65px;
+    background-color: black;
+    color: white;
+}
+nav ul li{
+    padding: 0 12px;
+}
+.container{
+    min-height: 75vh;
+    background-color: black;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    border-radius: 12px;
+    padding: 34px;
+    width: 70%;
+    margin: 23px auto;
+    background-image: url(15317.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.songitemcontainer{
+    margin-top: 74px;
+}
+.songItem {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 100%;
+    margin: 12px 0;
+    border-radius: 6px;
+    padding: 0 10px;
+    justify-content: space-between; 
+}
+
+.songItem img {
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 23px 23px;
+}
+.songItem span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.songlistplay img {
+    width: 80px;
+    cursor: pointer;
+}
+.brand img{
+    width: 44px;
+    padding: 0 8px;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+.bottom{
+    position: sticky;
+    height: 130px;
+    background-color:black;
+    bottom: 0;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 12px 0;
+}
+.songInfo {
+    display: flex;
+    align-items: center;     
+    justify-content: center; 
+    gap: 10px;             
+    margin-top: 10px;   
+    font-family: monospace;   
+}
+
+.gifmusic {
+    transition: opacity 5ms ease;
+    opacity: 0;
+    margin: 0;             
+}
+.icons {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.icons img {
+    width: 32px;
+    cursor: pointer;
+}
+#myProgressBar{
+    width: 80vw;
+    text-align: center;
+    cursor: pointer;
+}
