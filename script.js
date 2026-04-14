@@ -112,3 +112,19 @@ document.querySelector('.previous').addEventListener('click', () => {
     const currentBtn = document.getElementById(songIndex.toString());
     if (currentBtn) currentBtn.src = "pause-solid.png";
 });
+audioElement.addEventListener('ended', () => {
+    songIndex = (songIndex + 1) % songs.length;
+
+    masterSongname.innerText = songs[songIndex].songName;
+    audioElement.src = songs[songIndex].filePath;
+    audioElement.currentTime = 0;
+    audioElement.play();
+
+    masterplay.src = "pause-solid.png";
+    gif.style.opacity = 1;
+
+    makeAllPlays();
+    const currentBtn = document.getElementById(songIndex.toString());
+    if (currentBtn) currentBtn.src = "pause-solid.png";
+});
+
