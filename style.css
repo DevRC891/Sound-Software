@@ -124,3 +124,11 @@ nav ul li a{
     text-align: center;
     cursor: pointer;
 }
+.footer {
+  color: darkgoldenrod;
+  text-align: center;
+  font-weight: bolder;
+  padding: 15px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
