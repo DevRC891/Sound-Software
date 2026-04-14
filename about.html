@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Contact Page</title>
   <script src="https://kit.fontawesome.com/c32adfdcda.js" crossorigin="anonymous"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -267,15 +267,15 @@ footer {
         <form>
           <h2>Send Message</h2>
           <div class="input-box">
-            <input type="text" name="user_name" placeholder="Full Name" required>
+            <input type="text" name="user_name" id="name" placeholder="Full Name" required>
           </div>
 
           <div class="input-box">
-            <input type="email" name="user_name" placeholder="Email" required>
+            <input type="text" name="user_name" id="email" placeholder="Email" required>
           </div>
 
           <div class="input-box">
-            <textarea name="message" placeholder="Tell us your suggestions.." required></textarea>
+            <textarea name="message" id="message"placeholder="Tell us your suggestions.." required></textarea>
           </div>
 
           <div class="input-box">
@@ -304,7 +304,9 @@ footer {
 </footer>
 
 
+
 <script>
+  // Scroll animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -313,15 +315,67 @@ footer {
     });
   });
 
-  const hiddenElements = document.querySelectorAll('.hidden');
-  hiddenElements.forEach(el => observer.observe(el));
+  document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-  const form = document.querySelector("form");
+  // Initialize EmailJS ONLY ONCE
+  (function () {
+    emailjs.init("RmnauhFBq3Gxd7Ujo"); // your public key
+  })();
 
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Message sent successfully!");
-  });
+  // Form handling
+  window.onload = function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      // ✅ VALIDATION
+      const nameRegex = /^[A-Za-z ]{5,}$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!nameRegex.test(name)) {
+        alert("Name must be at least 5 letters and contain only alphabets.");
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        alert("Enter a valid email address.");
+        return;
+      }
+
+      if (message.length < 5) {
+        alert("Message must be at least 5 characters.");
+        return;
+      }
+
+      // 1️⃣ Send message to YOU
+      emailjs.send("service_jphufyv", "template_yfjshtq", {
+        name: name,
+        email: email,
+        message: message
+      });
+
+      // 2️⃣ Auto reply to USER (use DIFFERENT template in EmailJS)
+      emailjs.send("service_jphufyv", "template_768155o", {
+        to_email: email,
+        to_name: name
+      })
+      .then(() => {
+        alert("Email sent successfully!");
+        form.reset();
+      })
+      .catch((error) => {
+        alert("Failed to send email");
+        console.error(error);
+      });
+
+    });
+  };
+</script>
 </script>
 
 </body>
