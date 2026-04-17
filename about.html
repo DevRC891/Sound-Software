@@ -50,7 +50,7 @@
   overflow: hidden;         /* hide overflow */
   text-overflow: ellipsis;  /* optional: adds ... if too long */
 
-  font-size: clamp(0.5rem, 1.5vw, 1rem);  /* shrink for small screens */
+  font-size: clamp(0.5rem, 2vw, 1.5rem);  /* shrink for small screens */
   letter-spacing: 0.02rem;
 
   text-align: center;
@@ -97,9 +97,10 @@
     }
 
     .section-header h2 {
-      color: #FFF;
-      font-size: 3em;
-    }
+  color: #FFF;
+  white-space: nowrap;              /* force single line */
+  font-size: clamp(1.5rem, 6vw, 3rem); /* big but responsive */
+}
 
     .section-header p {
       color: #ddd;
