@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Contact Page</title>
+  <title>About Page</title>
   <script src="https://kit.fontawesome.com/c32adfdcda.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
@@ -43,9 +43,17 @@
 
 /* Typewriter container (UNCHANGED) */
 .typewriter {
+  display: inline-block;
   max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+
+  white-space: nowrap;      /* force single line */
+  overflow: hidden;         /* hide overflow */
+  text-overflow: ellipsis;  /* optional: adds ... if too long */
+
+  font-size: clamp(0.5rem, 1.5vw, 1rem);  /* shrink for small screens */
+  letter-spacing: 0.02rem;
+
+  text-align: center;
 }
 
 /* Cursor blinking */
