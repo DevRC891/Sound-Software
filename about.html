@@ -8,7 +8,57 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
 
+/* Header styling */
+.section-header h2 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideFade 1.2s ease forwards, glow 2s infinite alternate;
+}
+
+/* Slide + Fade animation */
+@keyframes slideFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtle glow effect */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #aaa, 0 0 10px #aaa;
+    }
+    to {
+        text-shadow: 0 0 15px #555, 0 0 25px #555;
+    }
+}
+
+/* Typewriter container (UNCHANGED) */
+.typewriter {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-right: 3px solid black;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Cursor blinking */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.typewriter {
+    animation: blink 0.7s infinite;
+}
     * {
       padding: 0;
       margin: 0;
@@ -112,23 +162,71 @@
 
     /* Footer */
 footer {
-  background: #0d0d0d;
-  color: #fff;
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: #000;
   padding: 40px 20px 20px;
   text-align: center;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
+/* 🔥 Gradient glowing border */
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* thickness of border */
+
+  background: linear-gradient(
+    45deg,
+    #ff6ec4,
+    #7873f5,
+    #00f2fe,
+    #4facfe,
+    #ff6ec4
+  );
+
+  border-radius: 20px;
+
+  /* Magic for border effect */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation: borderGlow 4s linear infinite;
+}
+
+/* Smooth moving gradient */
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Footer content */
 .footer-content {
+  position: relative; /* keep above glow */
+  z-index: 1;
   max-width: 500px;
   margin: auto;
 }
 
+/* Image */
 .footer-content img {
   width: 160px;  
   height: 160px;
-  
   object-fit: cover;
   margin-bottom: 15px;
+  border-radius: 50%;
 }
 
 /* Name */
@@ -145,14 +243,19 @@ footer {
   margin-top: 10px;
 }
 
-/* Icons */
+/* Glass icons */
 .social-bar a {
   width: 45px;
   height: 45px;
+  border-radius: 50%;
   
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+
   transition: 0.3s ease;
 }
 
@@ -163,15 +266,8 @@ footer {
 
 /* Hover */
 .social-bar a:hover {
-  background: #00bcd4;
+  background: rgba(255, 255, 255, 0.8);
   transform: translateY(-5px);
-}
-
-/* Bottom text */
-.footer-bottom {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #aaa;
 }
 
     /* Typewriter animation */
@@ -196,16 +292,24 @@ footer {
 
     /* Separate bar for social icons */
     .social-bar {
-      margin-top: 20px;
-      padding: 10px;
-    
-    }
+    margin-top: 20px;
+    padding: 10px;
+}
 
-    .social-bar a img {
-      width: 25px; /* smaller icons */
-      margin: 0 10px;
-      vertical-align: middle;
-    }
+/* Medium sized icons */
+.social-bar a img {
+    width: 45px;   /* increased size */
+    height: 45px;  /* keeps it proportional */
+    margin: 0 12px;
+    vertical-align: middle;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover effect (optional but recommended) */
+.social-bar a img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
 
     @media (max-width: 768px) {
       .row {
@@ -238,7 +342,7 @@ footer {
   <div class="container">
     <div class="section-header">
       <h2>Meet the Creator</h2>
-      <p>Full-Stack Developer | Frontend & Backend</p>
+      <p class="typewriter" id="typeText"></p>
     </div>
 
     <div class="row">
@@ -306,6 +410,24 @@ footer {
 
 
 <script>
+  const text = "Full-Stack Developer | Frontend & Backend";
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typeText").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 80);
+    } else {
+        setTimeout(() => {
+            document.getElementById("typeText").innerHTML = "";
+            index = 0;
+            typeEffect();
+        }, 1500);
+    }
+}
+
+typeEffect();
   // Scroll animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
