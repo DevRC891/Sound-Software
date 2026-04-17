@@ -43,12 +43,9 @@
 
 /* Typewriter container (UNCHANGED) */
 .typewriter {
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-right: 3px solid black;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* Cursor blinking */
@@ -222,8 +219,8 @@ footer::before {
 
 /* Image */
 .footer-content img {
-  width: 160px;  
-  height: 160px;
+  width: clamp(100px, 25vw, 160px);
+  height: clamp(100px, 25vw, 160px);
   object-fit: cover;
   margin-bottom: 15px;
   border-radius: 50%;
@@ -237,6 +234,7 @@ footer::before {
 
 /* Social bar */
 .social-bar {
+  flex-wrap: wrap;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -314,6 +312,7 @@ footer::before {
     @media (max-width: 768px) {
       .row {
         flex-direction: column;
+        gap:20px;
       }
 
       .section-header h2 {
