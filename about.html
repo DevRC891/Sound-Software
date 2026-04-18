@@ -7,6 +7,7 @@
   <script src="https://kit.fontawesome.com/c32adfdcda.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
+    
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
     body {
     font-family: Arial, sans-serif;
@@ -222,8 +223,10 @@ footer::before {
 .footer-content {
   position: relative; /* keep above glow */
   z-index: 1;
+  color:whitesmoke;
   max-width: 500px;
   margin: auto;
+  font-weight: bolder;
 }
 
 /* Image */
@@ -341,11 +344,156 @@ footer::before {
       opacity: 1;
       transform: translateY(0);
     }
+    /* CLOCK CONTAINER */
+.clock {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: relative;
+  margin: 40px auto;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+
+  border: 6px solid whitesmoke;
+
+  box-shadow: 
+    0 0 40px rgba(255, 215, 0, 0.3),
+    inset 0 0 25px rgba(255, 215, 0, 0.2);
+}
+
+/* CENTER DOT */
+.clock .center {
+  width: 14px;
+  height: 14px;
+  background: gold;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px blueviolet;
+  z-index: 10;
+}
+
+/* HANDS */
+.clock .hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(0deg);
+  border-radius: 10px;
+}
+
+.clock .hour {
+  width: 6px;
+  height: 65px;
+  background:grey;
+}
+
+.clock .minute {
+  width: 4px;
+  height: 85px;
+  background: grey;
+}
+
+.clock .second {
+  width: 2.5px;
+  height: 110px;
+  background: red;
+}
+
+/* NUMBERS (1–12) */
+.clock .number {
+  position: absolute;
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  pointer-events: none;
+}
+
+a h1 {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1.5rem;
+  color: whitesmoke;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  text-align: center;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+a h1:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+/* Position at bottom-left */
+/* Flexible Glass Button */
+/* Ultra Minimal Glass Button */
+.glass-btn {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+
+  padding: 6px 12px;        /* very compact */
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.18);
+
+  mix-blend-mode: difference;
+
+  transition: all 0.2s ease;
+}
+
+/* Subtle hover */
+.glass-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+/* Hidden state */
+.glass-btn.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+/* Smooth transition */
+.glass-btn {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
   </style>
 </head>
 
 <body>
+  <div class="clock" id="clock">
+  <div class="center"></div>
 
+  <div class="hand hour" id="hour"></div>
+  <div class="hand minute" id="minute"></div>
+  <div class="hand second" id="second"></div>
+</div>
 <section class="hidden">
   <div class="container">
     <div class="section-header">
@@ -403,18 +551,17 @@ footer::before {
 <footer class="hidden">
   <div class="footer-content">
     
-    <h3>Rupayan Chattaraj</h3>
-    <h3>------------</h3>
+    <h2>Rupayan Chattaraj</h2><br>
     <img src="me.jpeg" alt="Rupayan Chattaraj">
-    <h3>------------</h3>
+    
     <div class="social-bar">
       <a href="https://www.linkedin.com/in/rupayanchattaraj/"><img src="linkedin-removebg-preview.png"></a>
       <a href="https://www.instagram.com/rushooo___/"><img src="instagram-Photoroom.png"></a>
     </div>
 
   </div>
-</footer>
-
+</footer><br><br>
+<a href="index.html" class="glass-btn"><h1>Back</h1></a>
 
 
 <script>
@@ -436,7 +583,7 @@ function typeEffect() {
 }
 
 typeEffect();
-  // Scroll animation
+ 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -447,12 +594,12 @@ typeEffect();
 
   document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-  // Initialize EmailJS ONLY ONCE
+  
   (function () {
-    emailjs.init("RmnauhFBq3Gxd7Ujo"); // your public key
+    emailjs.init("RmnauhFBq3Gxd7Ujo"); 
   })();
 
-  // Form handling
+  
   window.onload = function () {
     const form = document.querySelector("form");
 
@@ -463,7 +610,7 @@ typeEffect();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
 
-      // ✅ VALIDATION
+      
       const nameRegex = /^[A-Za-z ]{5,}$/;
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -482,14 +629,14 @@ typeEffect();
         return;
       }
 
-      // 1️⃣ Send message to YOU
+    
       emailjs.send("service_jphufyv", "template_yfjshtq", {
         name: name,
         email: email,
         message: message
       });
 
-      // 2️⃣ Auto reply to USER (use DIFFERENT template in EmailJS)
+      
       emailjs.send("service_jphufyv", "template_768155o", {
         to_email: email,
         to_name: name
@@ -505,6 +652,72 @@ typeEffect();
 
     });
   };
+  
+  const clock = document.getElementById("clock");
+
+/* Create numbers dynamically */
+for (let i = 1; i <= 12; i++) {
+  const number = document.createElement("div");
+  number.className = "number";
+  number.innerText = i;
+
+  const angle = i * 30; // 360/12
+const rect = clock.getBoundingClientRect();
+const center = rect.width / 2;
+const radius = center * 0.75; // perfect proportional spacing
+
+const x = center + radius * Math.sin(angle * Math.PI / 180);
+const y = center - radius * Math.cos(angle * Math.PI / 180);
+
+  number.style.left = `${x}px`;
+  number.style.top = `${y}px`;
+
+  clock.appendChild(number);
+}
+
+/* Clock logic */
+const hour = document.getElementById('hour');
+const minute = document.getElementById('minute');
+const second = document.getElementById('second');
+
+function updateClock() {
+  const now = new Date();
+
+  const hrs = now.getHours();
+  const mins = now.getMinutes();
+  const secs = now.getSeconds();
+
+  const hourDeg = (hrs % 12) * 30 + mins * 0.5;
+  const minuteDeg = mins * 6 + secs * 0.1;
+  const secondDeg = secs * 6;
+
+  hour.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+  minute.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+  second.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+const btn = document.querySelector(".glass-btn");
+let timeout;
+
+/* Show button */
+function showBtn() {
+  btn.classList.remove("hidden");
+
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    btn.classList.add("hidden");
+  }, 2000); // hide after 2s idle
+}
+
+/* Detect activity */
+["mousemove", "keydown", "scroll", "touchstart"].forEach(event => {
+  window.addEventListener(event, showBtn);
+});
+
+/* Start hidden initially */
+btn.classList.add("hidden");
 </script>
 </script>
 
