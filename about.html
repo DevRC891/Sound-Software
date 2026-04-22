@@ -255,24 +255,20 @@ footer::before {
 
 /* Glass icons */
 .social-bar a {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
+      width: 45px;
+    height: 45px;
+    border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
 
   transition: 0.3s ease;
 }
 
-.social-bar a img {
-  width: 20px;
-  height: 20px;
-}
+
 
 /* Hover */
 .social-bar a:hover {
@@ -308,10 +304,11 @@ footer::before {
 
 /* Medium sized icons */
 .social-bar a img {
-    width: 45px;   /* increased size */
-    height: 45px;  /* keeps it proportional */
-    margin: 0 12px;
-    vertical-align: middle;
+    width: 100%;   /* smaller than container */
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -483,6 +480,23 @@ a h1:hover {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.brand {
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow:
+            0 0 5px #0ff,
+            0 0 10px #0ff;
+    }
+    to {
+        text-shadow:
+            0 0 10px #0ff,
+            0 0 20px #0ff,
+            0 0 40px #0ff;
+    }
+}
   </style>
 </head>
 
@@ -551,10 +565,11 @@ a h1:hover {
 <footer class="hidden">
   <div class="footer-content">
     
-    <h2>Rupayan Chattaraj</h2><br>
+    <h2 class="brand">Rupayan Chattaraj</h2><br>
     <img src="me.jpeg" alt="Rupayan Chattaraj">
     
     <div class="social-bar">
+      <a href="https://devrc891.github.io/Sound-Software/"><img src="github.png"></a>
       <a href="https://www.linkedin.com/in/rupayanchattaraj/"><img src="linkedin-removebg-preview.png"></a>
       <a href="https://www.instagram.com/rushooo___/"><img src="instagram-Photoroom.png"></a>
     </div>
