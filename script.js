@@ -15,6 +15,7 @@ let songs=[
     {songName: "Night Changes",filePath: "Songs/nightchanges.mp3",coverPath:"Songimages/nightchanges.jpg"},
     {songName: "Closer",filePath: "Songs/closer.mp3",coverPath:"Songimages/closer.jpg"},
     {songName: "A Thousand Years",filePath: "Songs/thousandyears.mp3",coverPath:"Songimages/thousandyears.jpg"},
+    {songName: "End of Begining",filePath: "Songs/endofbegin.mp3",coverPath:"Songimages/endofbegining.jpg"},
 ]
 songitems.forEach((element, i) => {
   const img = element.querySelector("img");
@@ -127,4 +128,3 @@ audioElement.addEventListener('ended', () => {
     const currentBtn = document.getElementById(songIndex.toString());
     if (currentBtn) currentBtn.src = "pause-solid.png";
 });
-
