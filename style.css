@@ -41,6 +41,7 @@ nav ul li a{
     background-image: url(15317.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 }
 @media (max-width: 768px) {
     .container {
@@ -54,17 +55,22 @@ nav ul li a{
     margin-top: 74px;
 }
 .songItem {
-    height: 80px;
+    width: 100%;
     display: flex;
     align-items: center;
-    color: white;
-    width: 100%;
-    margin: 12px 0;
-    border-radius: 6px;
-    padding: 0 10px;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
-
+.songName {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.songlistplay {            /* fixed width = consistent alignment */
+    display: flex;
+    justify-content: flex-end;
+}
 .songItem img {
     height: 80px;
     object-fit: cover;
@@ -139,4 +145,76 @@ nav ul li a{
   padding: 15px;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-size: 14px;
+}
+
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+.brand {
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow:
+            0 0 5px #0ff,
+            0 0 10px #0ff;
+    }
+    to {
+        text-shadow:
+            0 0 10px #0ff,
+            0 0 20px #0ff,
+            0 0 40px #0ff;
+    }
+}
+
+.footertextline {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+
+    animation: bounceBeat 0.6s infinite;
+}
+
+@keyframes bounceBeat {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-6px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
 }
