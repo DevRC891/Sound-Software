@@ -66,28 +66,28 @@ nav ul li a{
 .songitemcontainer{
     margin-top: 74px;
 }
-.songName {
-    flex: 1;
-    min-width: 0;
-
-    white-space: normal;
-    overflow-wrap: break-word;  /* ✅ breaks only if needed */
-    word-break: keep-all;       /* ✅ prevents breaking inside words */
-}
 .songItem {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+}
+
+.songItem img {
+    height: 60px;          /* smaller image */
+    margin: 10px;          /* reduce margin */
+}
+
+.songName {
+    flex: 1;
+    min-width: 120px;      /* 🔥 give it space */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: keep-all;  /* ✅ no word splitting */
 }
 
 .songlistplay {
-    flex-shrink: 0;   /* prevents it from getting pushed */
-}
-.songItem img {
-    height: 80px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin: 23px 23px;
+    min-width: 80px;       /* fixed space for time + play */
+    flex-shrink: 0;
 }
 .songItem span {
     display: flex;
