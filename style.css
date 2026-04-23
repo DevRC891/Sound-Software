@@ -70,8 +70,9 @@ nav ul li a{
     flex: 1;
     min-width: 0;
 
-    white-space: normal;        /* allow multiple lines */
-    overflow-wrap: break-word;  /* break long words */
+    white-space: normal;
+    overflow-wrap: break-word;  /* ✅ breaks only if needed */
+    word-break: keep-all;       /* ✅ prevents breaking inside words */
 }
 .songItem {
     display: flex;
