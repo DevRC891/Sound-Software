@@ -42,7 +42,7 @@ nav ul li a{
     background-image: url(15317.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
+    overflow: visible;
 }
 @media (max-width: 768px) {
     .container {
@@ -75,11 +75,12 @@ nav ul li a{
 .songName {
     flex: 1;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+    white-space: normal;        /* allow multiple lines */
+    overflow-wrap: break-word;  /* break long words */
 }
-.songlistplay {            /* fixed width = consistent alignment */
+.songlistplay {     
+    flex-shrink: 0;       /* fixed width = consistent alignment */
     display: flex;
     justify-content: flex-end;
 }
