@@ -128,3 +128,20 @@ audioElement.addEventListener('ended', () => {
     const currentBtn = document.getElementById(songIndex.toString());
     if (currentBtn) currentBtn.src = "pause-solid.png";
 });
+
+// ================= SEARCH FUNCTIONALITY =================
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    
+    songitems.forEach((element) => {
+        const songName = element.querySelector('.songName').innerText.toLowerCase();
+        
+        if (songName.includes(query)) {
+            element.style.display = "flex"; // Show matching songs
+        } else {
+            element.style.display = "none"; // Hide non-matching songs
+        }
+    });
+});
