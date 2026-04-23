@@ -66,12 +66,6 @@ nav ul li a{
 .songitemcontainer{
     margin-top: 74px;
 }
-.songItem {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 .songName {
     flex: 1;
     min-width: 0;
@@ -79,10 +73,14 @@ nav ul li a{
     white-space: normal;        /* allow multiple lines */
     overflow-wrap: break-word;  /* break long words */
 }
-.songlistplay {     
-    flex-shrink: 0;       /* fixed width = consistent alignment */
+.songItem {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.songlistplay {
+    flex-shrink: 0;   /* prevents it from getting pushed */
 }
 .songItem img {
     height: 80px;
