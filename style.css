@@ -29,6 +29,7 @@ nav ul li a{
     transition: 0.3s;
 }
 .container{
+    font-size: 14px;
     min-height: 75vh;
     background-color: black;
     color: white;
@@ -49,6 +50,17 @@ nav ul li a{
         padding: 20px;
         background-size: cover;
         background-position: center;
+        position: relative;
+        /* Important for wrapping */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    .play-button{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        max-width: 100%;
     }
 }
 .songitemcontainer{
