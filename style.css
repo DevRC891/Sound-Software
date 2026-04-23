@@ -73,20 +73,20 @@ nav ul li a{
 }
 
 .songItem img {
-    height: 60px;          /* smaller image */
-    margin: 10px;          /* reduce margin */
+    height: 60px;          
+    margin: 10px;          
 }
 
 .songName {
     flex: 1;
-    min-width: 120px;      /* 🔥 give it space */
+    min-width: 120px;     
     white-space: normal;
     overflow-wrap: break-word;
-    word-break: keep-all;  /* ✅ no word splitting */
+    word-break: keep-all;  
 }
 
 .songlistplay {
-    min-width: 80px;       /* fixed space for time + play */
+    min-width: 80px;
     flex-shrink: 0;
 }
 .songItem span {
@@ -229,4 +229,48 @@ h1 {
     50%  { transform: translateY(0); }
     75%  { transform: translateY(-3px); }
     100% { transform: translateY(0); }
+}
+
+/* Search Section Below Navbar */
+.search-section {
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ================= SEARCH LABEL ================= */
+
+.search-section label {
+    font-size: 22px;          /* slightly bigger */
+    font-weight: 700;         /* bold */
+    letter-spacing: 1px;
+    color: black;           /* clean light color */
+}
+
+/* ================= INPUT BOX ================= */
+
+.search-section input {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    width: 220px;
+    background: #1e1e1e;
+    color: white;
+    transition: 0.3s;
+}
+
+/* Focus glow (kept subtle) */
+.search-section input:focus {
+    width: 260px;
+    box-shadow: 0 0 10px #1db954;
+}
+
+/* ================= PLACEHOLDER ================= */
+
+#searchInput::placeholder {
+    color: #aaaaaa; /* simple, no glow */
 }
