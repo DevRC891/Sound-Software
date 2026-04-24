@@ -19,6 +19,10 @@ let songs=[
     {songName: "Lutt Le Gaya",filePath: "Songs/lutlegaya.mp3",coverPath:"Songimages/luttlegaya.jpg"},
     {songName: "Run down the city - (Monica)",filePath: "Songs/rundownthecity.mp3",coverPath:"Songimages/rundownthecity.jpg"},
     {songName: "Beedi Jalaile",filePath: "Songs/Beedi.mp3",coverPath:"Songimages/beedi.jpg"},
+    {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg"},
+    {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg"},
+    {songName: "Ure Geche-Lyrical",filePath: "Songs/Uregeche.mp3",coverPath:"Songimages/Uregeche.jpg"},
+    {songName: "Ore Manwa Re",filePath: "Songs/oremanware.mp3",coverPath:"Songimages/oremanware.jpg"},
 ]
 songitems.forEach((element, i) => {
   const img = element.querySelector("img");
@@ -147,4 +151,90 @@ searchInput.addEventListener('input', (e) => {
             element.style.display = "none"; // Hide non-matching songs
         }
     });
+});
+
+
+document.querySelectorAll('.btn-glass').forEach(button => {
+    button.addEventListener('click', function () {
+        const lang = this.textContent.trim(); // "Hindi", "English", or "Bengali"
+
+        // Find the first song item whose songName has a class matching the language
+        const firstMatch = document.querySelector(`.songName.${lang}`);
+
+        if (firstMatch) {
+            firstMatch.closest('.songItem').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    });
+});
+
+// ================= BACKGROUND PLAY / MEDIA SESSION =================
+if ('mediaSession' in navigator) {
+    const updateMediaSession = () => {
+        const song = songs[songIndex];
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: song.songName,
+            artist: 'Sound-Cloud',
+            artwork: [{ src: song.coverPath, sizes: '512x512', type: 'image/jpg' }]
+        });
+
+        navigator.mediaSession.setActionHandler('play', () => {
+            audioElement.play();
+            masterplay.src = "pause-solid.png";
+            gif.style.opacity = 1;
+        });
+
+        navigator.mediaSession.setActionHandler('pause', () => {
+            audioElement.pause();
+            masterplay.src = "play-solid.png";
+            gif.style.opacity = 0;
+        });
+
+        navigator.mediaSession.setActionHandler('nexttrack', () => {
+            document.querySelector('.next').click();
+        });
+
+        navigator.mediaSession.setActionHandler('previoustrack', () => {
+            document.querySelector('.previous').click();
+        });
+    };
+
+    audioElement.addEventListener('play', updateMediaSession);
+}
+
+// ================= WAKE LOCK (keep audio alive on mobile) =================
+let wakeLock = null;
+
+const requestWakeLock = async () => {
+    if ('wakeLock' in navigator) {
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+        } catch (err) {
+            console.log('Wake Lock not available:', err);
+        }
+    }
+};
+
+const releaseWakeLock = () => {
+    if (wakeLock !== null) {
+        wakeLock.release();
+        wakeLock = null;
+    }
+};
+
+audioElement.addEventListener('play', () => {
+    requestWakeLock();
+});
+
+audioElement.addEventListener('pause', () => {
+    releaseWakeLock();
+});
+
+// Re-acquire wake lock if page becomes visible again while playing
+document.addEventListener('visibilitychange', async () => {
+    if (document.visibilityState === 'visible' && !audioElement.paused) {
+        await requestWakeLock();
+    }
 });
