@@ -20,6 +20,7 @@ let songs=[
     {songName: "Run down the city - (Monica)",filePath: "Songs/rundownthecity.mp3",coverPath:"Songimages/rundownthecity.jpg"},
     {songName: "Beedi Jalaile",filePath: "Songs/Beedi.mp3",coverPath:"Songimages/beedi.jpg"},
     {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg"},
+    {songName: "Mainu Ishq Tera Lae Dooba",filePath: "Songs/LaeDooba.mp3",coverPath:"Songimages/LaeDooba.jpg"},
     {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg"},
     {songName: "Ure Geche-Lyrical",filePath: "Songs/Uregeche.mp3",coverPath:"Songimages/Uregeche.jpg"},
     {songName: "Ore Manwa Re",filePath: "Songs/oremanware.mp3",coverPath:"Songimages/oremanware.jpg"},
