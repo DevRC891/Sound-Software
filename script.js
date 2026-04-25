@@ -239,3 +239,78 @@ document.addEventListener('visibilitychange', async () => {
         await requestWakeLock();
     }
 });
+
+
+
+
+    const singers = [
+      { name: "Shreya Ghoshal",   src: "Singers/Shreya Ghosal.jpg", bg: "#2a1a3a" },
+      { name: "Jonita Gandhi",    src: "Singers/Jonita Gandhi.jpg", bg: "#12283a" },
+      { name: "Arijit Singh",     src: "Singers/Arijit SIngh.jpg", bg: "#2a1610" },
+      { name: "Diljit Dosanjh",      src: "Singers/Diljit Dosanjh.jpg", bg: "#3a1028" },
+      { name: "Ed Sherran",       src: "Singers/Edsherran.jpg", bg: "#102a18" },
+      { name: "Karan Aujla",  src: "Singers/Karan aujla.jpg",bg: "#2a2010" },
+      { name: "Kumar Sanu",       src: "Singers/Kumar Sanu.jpg", bg: "#101e2a" },
+      { name: "Sunidhi Chauhan",  src: "Singers/Sunidhi Chauhan.jpg",bg: "#2a103a" },
+      { name: "A.R. Rahman",      src: "Singers/A.R. Rahman.jpg",bg: "#0a2028" },
+      { name: "Udit Narayan",     src: "Singers/udit narayan.jpg",bg: "#281a0a" },
+    ];
+
+    const track = document.getElementById('track');
+
+    function getInitials(name) {
+      return name.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
+    }
+
+    function makeCard(s, idx) {
+      const wrap  = document.createElement('div');
+      wrap.className = 'card-wrap';
+
+      const inner = document.createElement('div');
+      inner.className = 'card-inner';
+      inner.style.animationDelay = `${-(idx * 0.42 % 4).toFixed(2)}s`;
+
+      /* Image */
+      const img = document.createElement('img');
+      img.alt = s.name;
+      img.loading = 'lazy';
+      img.src = s.src;
+      img.onerror = function () {
+        this.remove();
+        const ph = document.createElement('div');
+        ph.className = 'card-placeholder';
+        ph.style.background = s.bg;
+        const init = document.createElement('div');
+        init.className = 'ph-initials';
+        init.textContent = getInitials(s.name);
+        ph.appendChild(init);
+        inner.insertBefore(ph, inner.firstChild);
+      };
+
+      /* Shine */
+      const shine = document.createElement('div');
+      shine.className = 'card-shine';
+
+      /* Label */
+      const label = document.createElement('div');
+      label.className = 'card-label';
+      const nameEl = document.createElement('span');
+      nameEl.className = 'card-name';
+      nameEl.textContent = s.name;
+      const genreEl = document.createElement('span');
+      genreEl.className = 'card-genre';
+      genreEl.textContent = s.genre;
+      label.append(nameEl, genreEl);
+
+      /* Edge */
+      const edge = document.createElement('div');
+      edge.className = 'card-edge';
+
+      inner.append(img, shine, label, edge);
+      wrap.appendChild(inner);
+      return wrap;
+    }
+
+    /* Duplicate list for seamless infinite loop */
+    singers.forEach((s, i) => track.appendChild(makeCard(s, i)));
+    singers.forEach((s, i) => track.appendChild(makeCard(s, i + singers.length)));
