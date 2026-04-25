@@ -241,8 +241,6 @@ document.addEventListener('visibilitychange', async () => {
 });
 
 
-
-
     const singers = [
       { name: "Shreya Ghoshal",   src: "Singers/Shreya Ghosal.jpg", bg: "#2a1a3a" },
       { name: "Jonita Gandhi",    src: "Singers/Jonita Gandhi.jpg", bg: "#12283a" },
