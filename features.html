@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features</title>
+    <style>
+        /* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body */
+body {
+  background: whitesmoke;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+/* Section (no background) */
+.carousel-section {
+  width: 100%;
+  padding: 30px 0;
+}
+
+/* Row container */
+.carousel-outer {
+  width: 75%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft fade edges */
+.carousel-outer::before,
+.carousel-outer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.carousel-outer::before {
+  left: 0;
+  background: linear-gradient(to right, #0d0d0f, transparent);
+}
+
+.carousel-outer::after {
+  right: 0;
+  background: linear-gradient(to left, #0d0d0f, transparent);
+}
+
+/* Track */
+.carousel-track {
+  display: flex;
+  gap: 22px;                  /* compact spacing */
+  width: max-content;
+  animation: scrollRow 20s linear infinite;
+}
+
+/* Pause on hover */
+.carousel-outer:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* Infinite scroll */
+@keyframes scrollRow {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Logo wrapper */
+.card-wrap {
+  width: 60px;               /* smaller size */
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo image */
+.card-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  transition: transform 0.25s ease;
+}
+
+/* Hover effect */
+.card-wrap:hover img {
+  transform: scale(1.12);
+}
+    </style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const logos = [
+    {src: "logos/emailjs.png"},
+    {src: "logos/HTML.png"},
+    {src: "logos/Javascript.png"},
+    {src: "logos/react.png"},
+    {src: "logos/CSS.png"},
+    {src: "logos/github.png"},
+    {src: "logos/gpt.png"},
+    {src: "logos/gemini.png"},
+    {src: "logos/canva.png"},
+    {src: "logos/claude.png"},
+    {src: "logos/figma.png"},   
+    {src: "logos/youtube.png"},
+    {src: "logos/copilot.png"},
+    {src: "logos/spotify.png"},
+  ];
+
+  const track = document.getElementById('track');
+
+  function makeLogo(s) {
+    const wrap = document.createElement('div');
+    wrap.className = 'card-wrap';
+
+    const img = document.createElement('img');
+    img.src = s.src;
+
+    wrap.appendChild(img);
+    return wrap;
+  }
+
+  /* 🔁 repeat multiple times for seamless fill */
+  for (let i = 0; i < 4; i++) {
+    logos.forEach(l => track.appendChild(makeLogo(l)));
+  }
+
+});
+</script>
+</head>
+<body>
+      <header class="hero">
+    <div class="divider"></div>
+  </header>
+
+  <section class="carousel-section">
+    <div class="carousel-outer">
+      <div class="carousel-track" id="track"></div>
+    </div>
+  </section>
+</body>
+</html>
