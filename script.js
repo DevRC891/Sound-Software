@@ -22,6 +22,12 @@ let songs=[
     {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg"},
     {songName: "Mainu Ishq Tera Lae Dooba",filePath: "Songs/LaeDooba.mp3",coverPath:"Songimages/LaeDooba.jpg"},
     {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg"},
+    {songName: "Ae Ajnabee",filePath: "Songs/Ae Ajnabee.mp3",coverPath:"Songimages/Ae Ajnabee.jpg"},
+    {songName: "Har Har Gange",filePath: "Songs/Har Har Gange.mp3",coverPath:"Songimages/Har Har Gange.jpg"},
+    {songName: "Arz Kiya Hai",filePath: "Songs/Arz Kiya Hai.mp3",coverPath:"Songimages/Arz Kiya Hai.jpg"},
+    {songName: "Deva Deva",filePath: "Songs/Deva Deva.mp3",coverPath:"Songimages/Deva Deva.jpg"},
+    {songName: "Aaoge Tum Kabhi",filePath: "Songs/Aaoge Tum Kabhi.mp3",coverPath:"Songimages/Aaoge Tum Kabhi.jpg"},
+    {songName: "Hum Tere Pyar Mein",filePath: "Songs/Hum Tere Pyar Mein.mp3",coverPath:"Songimages/Hum Tere Pyar Mein.jpg"},
     {songName: "Ure Geche-Lyrical",filePath: "Songs/Uregeche.mp3",coverPath:"Songimages/Uregeche.jpg"},
     {songName: "Ore Manwa Re",filePath: "Songs/oremanware.mp3",coverPath:"Songimages/oremanware.jpg"},
 ]
