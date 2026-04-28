@@ -182,15 +182,22 @@ const searchInput = document.getElementById('searchInput');
 
 searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
-    
-    songitems.forEach((element) => {
-        const songName = element.querySelector('.songName').innerText.toLowerCase();
-        
-        if (songName.includes(query)) {
-            element.style.display = "flex"; // Show matching songs
-        } else {
-            element.style.display = "none"; // Hide non-matching songs
-        }
+
+    songitems.forEach((el, i) => {
+        const song = songs[i];
+        const songName = el.querySelector('.songName').innerText.toLowerCase();
+
+        // Check if song matches the active filter
+        let filterMatch;
+        if (activeFilter === null || activeFilter === "All") filterMatch = true;
+        else if (activeFilter === "Workout") filterMatch = song.mode === "workout";
+        else filterMatch = song.lang === activeFilter;
+
+        // Check if song matches the search query
+        const searchMatch = songName.includes(query);
+
+        // Show only if BOTH conditions are true
+        el.style.display = (filterMatch && searchMatch) ? "flex" : "none";
     });
 });
 
