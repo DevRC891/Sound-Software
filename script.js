@@ -7,30 +7,36 @@ let gif=document.getElementById('gif');
 let masterSongname=document.getElementById('masterSongname');
 let songitems=Array.from(document.getElementsByClassName('songItem'));
 let songs=[
-    {songName: "Let Me Love You",filePath: "Songs/letmeloveyou.mp3",coverPath:"Songimages/Letmeloveyou.jpg"},
-    {songName: "Memories",filePath: "Songs/memories.mp3",coverPath:"Songimages/memories.jpg"},
-    {songName: "Shape of You",filePath: "Songs/shapeofyou.mp3",coverPath:"Songimages/shapeofyou.jpg"},
-    {songName: "Perfect",filePath: "Songs/perfect.mp3",coverPath:"Songimages/perfect.jpg"},
-    {songName: "Believer",filePath: "Songs/believer.mp3",coverPath:"Songimages/believer.jpg"},
-    {songName: "Night Changes",filePath: "Songs/nightchanges.mp3",coverPath:"Songimages/nightchanges.jpg"},
-    {songName: "Closer",filePath: "Songs/closer.mp3",coverPath:"Songimages/closer.jpg"},
-    {songName: "A Thousand Years",filePath: "Songs/thousandyears.mp3",coverPath:"Songimages/thousandyears.jpg"},
-    {songName: "End of Begining",filePath: "Songs/endofbegin.mp3",coverPath:"Songimages/endofbegining.jpg"},
-    {songName: "Lutt Le Gaya",filePath: "Songs/lutlegaya.mp3",coverPath:"Songimages/luttlegaya.jpg"},
-    {songName: "Run down the city - (Monica)",filePath: "Songs/rundownthecity.mp3",coverPath:"Songimages/rundownthecity.jpg"},
-    {songName: "Beedi Jalaile",filePath: "Songs/Beedi.mp3",coverPath:"Songimages/beedi.jpg"},
-    {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg"},
-    {songName: "Mainu Ishq Tera Lae Dooba",filePath: "Songs/LaeDooba.mp3",coverPath:"Songimages/LaeDooba.jpg"},
-    {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg"},
-    {songName: "Ae Ajnabee",filePath: "Songs/Ae Ajnabee.mp3",coverPath:"Songimages/Ae Ajnabee.jpg"},
-    {songName: "Har Har Gange",filePath: "Songs/Har Har Gange.mp3",coverPath:"Songimages/Har Har Gange.jpg"},
-    {songName: "Arz Kiya Hai",filePath: "Songs/Arz Kiya Hai.mp3",coverPath:"Songimages/Arz Kiya Hai.jpg"},
-    {songName: "Deva Deva",filePath: "Songs/Deva Deva.mp3",coverPath:"Songimages/Deva Deva.jpg"},
-    {songName: "Aaoge Tum Kabhi",filePath: "Songs/Aaoge Tum Kabhi.mp3",coverPath:"Songimages/Aaoge Tum Kabhi.jpg"},
-    {songName: "Hum Tere Pyar Mein",filePath: "Songs/Hum Tere Pyar Mein.mp3",coverPath:"Songimages/Hum Tere Pyar Mein.jpg"},
-    {songName: "Ure Geche-Lyrical",filePath: "Songs/Uregeche.mp3",coverPath:"Songimages/Uregeche.jpg"},
-    {songName: "Ore Manwa Re",filePath: "Songs/oremanware.mp3",coverPath:"Songimages/oremanware.jpg"},
+    {songName: "Let Me Love You",filePath: "Songs/letmeloveyou.mp3",coverPath:"Songimages/Letmeloveyou.jpg",lang:"English"},
+    {songName: "Memories",filePath: "Songs/memories.mp3",coverPath:"Songimages/memories.jpg",lang:"English"},
+    {songName: "Shape of You",filePath: "Songs/shapeofyou.mp3",coverPath:"Songimages/shapeofyou.jpg",lang:"English"},
+    {songName: "Perfect",filePath: "Songs/perfect.mp3",coverPath:"Songimages/perfect.jpg",lang:"English"},
+    {songName: "Believer",filePath: "Songs/believer.mp3",coverPath:"Songimages/believer.jpg",lang:"English",mode:"workout"},
+    {songName: "Night Changes",filePath: "Songs/nightchanges.mp3",coverPath:"Songimages/nightchanges.jpg",lang:"English"},
+    {songName: "Closer",filePath: "Songs/closer.mp3",coverPath:"Songimages/closer.jpg",lang:"English"},
+    {songName: "A Thousand Years",filePath: "Songs/thousandyears.mp3",coverPath:"Songimages/thousandyears.jpg",lang:"English"},
+    {songName: "End of Begining",filePath: "Songs/endofbegin.mp3",coverPath:"Songimages/endofbegining.jpg",lang:"English"},
+    {songName: "Lutt Le Gaya",filePath: "Songs/lutlegaya.mp3",coverPath:"Songimages/luttlegaya.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Run down the city - (Monica)",filePath: "Songs/rundownthecity.mp3",coverPath:"Songimages/rundownthecity.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Beedi Jalaile",filePath: "Songs/Beedi.mp3",coverPath:"Songimages/beedi.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg",lang:"Hindi"},
+    {songName: "Mainu Ishq Tera Lae Dooba",filePath: "Songs/LaeDooba.mp3",coverPath:"Songimages/LaeDooba.jpg",lang:"Hindi"},
+    {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg",lang:"Hindi"},
+    {songName: "Ae Ajnabee",filePath: "Songs/Ae Ajnabee.mp3",coverPath:"Songimages/Ae Ajnabee.jpg",lang:"Hindi"},
+    {songName: "Har Har Gange",filePath: "Songs/Har Har Gange.mp3",coverPath:"Songimages/Har Har Gange.jpg",lang:"Hindi"},
+    {songName: "Arz Kiya Hai",filePath: "Songs/Arz Kiya Hai.mp3",coverPath:"Songimages/Arz Kiya Hai.jpg",lang:"Hindi"},
+    {songName: "Deva Deva",filePath: "Songs/Deva Deva.mp3",coverPath:"Songimages/Deva Deva.jpg",lang:"Hindi"},
+    {songName: "Aaoge Tum Kabhi",filePath: "Songs/Aaoge Tum Kabhi.mp3",coverPath:"Songimages/Aaoge Tum Kabhi.jpg",lang:"Hindi"},
+    {songName: "Hum Tere Pyar Mein",filePath: "Songs/Hum Tere Pyar Mein.mp3",coverPath:"Songimages/Hum Tere Pyar Mein.jpg",lang:"Hindi"},
+    {songName: "Mila To Marega",filePath: "Songs/Mila To Marega.mp3",coverPath:"Songimages/milatomarega.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Zinda",filePath: "Songs/Zinda.mp3",coverPath:"Songimages/Zinda.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Chak De India",filePath: "Songs/Chakde.mp3",coverPath:"Songimages/Chakde.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Dangal",filePath: "Songs/Dangal.mp3",coverPath:"Songimages/Dangal.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Sultan",filePath: "Songs/Sultan.mp3",coverPath:"Songimages/Sultan.jpg",lang:"Hindi",mode:"workout"},
+    {songName: "Aasman Ko Chukar",filePath: "Songs/Aasman Ko Chukar.mp3",coverPath:"Songimages/Aasman Ko Chukar.jpg",lang:"Hindi",mode:"workout"},
 ]
+let activeFilter = null; // can be 'Hindi', 'English', or 'workout'
+
 songitems.forEach((element, i) => {
   const img = element.querySelector("img");
   if (img && songs[i]) {
@@ -98,49 +104,77 @@ Array.from(document.getElementsByClassName('play')).forEach((element) => {
     }
   });
 });
+// Helper to get next valid index based on active filter
+function getNextIndex(from) {
+    let next = (from + 1) % songs.length;
+    if (activeFilter === "All" || activeFilter === null) {
+        return next; // no filtering, just go to next song
+    } else if (activeFilter === "Workout") {
+        while (!songs[next].mode || songs[next].mode !== "workout") {
+            next = (next + 1) % songs.length;
+        }
+    } else if (activeFilter === "Hindi" || activeFilter === "English") {
+        const lang = songs[from].lang;
+        while (songs[next].lang !== lang) {
+            next = (next + 1) % songs.length;
+        }
+    }
+    return next;
+}
+
+function getPrevIndex(from) {
+    let prev = from <= 0 ? songs.length - 1 : from - 1;
+    if (activeFilter === "All" || activeFilter === null) {
+        return prev; // no filtering, just go to previous song
+    } else if (activeFilter === "Workout") {
+        while (!songs[prev].mode || songs[prev].mode !== "workout") {
+            prev = prev <= 0 ? songs.length - 1 : prev - 1;
+        }
+    } else if (activeFilter === "Hindi" || activeFilter === "English") {
+        const lang = songs[from].lang;
+        while (songs[prev].lang !== lang) {
+            prev = prev <= 0 ? songs.length - 1 : prev - 1;
+        }
+    }
+    return prev;
+}
+
 document.querySelector('.next').addEventListener('click', () => {
-    songIndex = (songIndex + 1) % songs.length;  
-    masterSongname.innerText=songs[songIndex].songName;  
-    audioElement.src = songs[songIndex].filePath;
-    audioElement.currentTime = 0;
-    audioElement.play();
-    
-    masterplay.src = "pause-solid.png";
-    gif.style.opacity = 1;
-
-    makeAllPlays();
-    const currentBtn = document.getElementById(songIndex.toString());
-    if (currentBtn) currentBtn.src = "pause-solid.png";
-});
-document.querySelector('.previous').addEventListener('click', () => {
-    songIndex = songIndex <= 0 ? songs.length - 1 : songIndex - 1;  
-    masterSongname.innerText=songs[songIndex].songName;
-    audioElement.src = songs[songIndex].filePath;
-    audioElement.currentTime = 0;
-    audioElement.play();
-
-    masterplay.src = "pause-solid.png";
-    gif.style.opacity = 1;
-  
-
-    makeAllPlays();
-    const currentBtn = document.getElementById(songIndex.toString());
-    if (currentBtn) currentBtn.src = "pause-solid.png";
-});
-audioElement.addEventListener('ended', () => {
-    songIndex = (songIndex + 1) % songs.length;
-
+    songIndex = getNextIndex(songIndex);
     masterSongname.innerText = songs[songIndex].songName;
     audioElement.src = songs[songIndex].filePath;
     audioElement.currentTime = 0;
     audioElement.play();
-
     masterplay.src = "pause-solid.png";
     gif.style.opacity = 1;
-
     makeAllPlays();
-    const currentBtn = document.getElementById(songIndex.toString());
-    if (currentBtn) currentBtn.src = "pause-solid.png";
+    const btn = document.getElementById(songIndex.toString());
+    if (btn) btn.src = "pause-solid.png";
+});
+
+document.querySelector('.previous').addEventListener('click', () => {
+    songIndex = getPrevIndex(songIndex);
+    masterSongname.innerText = songs[songIndex].songName;
+    audioElement.src = songs[songIndex].filePath;
+    audioElement.currentTime = 0;
+    audioElement.play();
+    masterplay.src = "pause-solid.png";
+    gif.style.opacity = 1;
+    makeAllPlays();
+    const btn = document.getElementById(songIndex.toString());
+    if (btn) btn.src = "pause-solid.png";
+});
+audioElement.addEventListener('ended', () => {
+    songIndex = getNextIndex(songIndex);
+    masterSongname.innerText = songs[songIndex].songName;
+    audioElement.src = songs[songIndex].filePath;
+    audioElement.currentTime = 0;
+    audioElement.play();
+    masterplay.src = "pause-solid.png";
+    gif.style.opacity = 1;
+    makeAllPlays();
+    const btn = document.getElementById(songIndex.toString());
+    if (btn) btn.src = "pause-solid.png";
 });
 
 // ================= SEARCH FUNCTIONALITY =================
@@ -163,16 +197,47 @@ searchInput.addEventListener('input', (e) => {
 
 document.querySelectorAll('.btn-glass').forEach(button => {
     button.addEventListener('click', function () {
-        const lang = this.textContent.trim(); // "Hindi", "English", or "Bengali"
+        const label = this.textContent.trim();
 
-        // Find the first song item whose songName has a class matching the language
-        const firstMatch = document.querySelector(`.songName.${lang}`);
+        // Toggle off if already active (except All — All doesn't toggle off)
+        if (activeFilter === label && label !== "All") {
+            activeFilter = null;
+            document.querySelectorAll('.btn-glass').forEach(b => b.classList.remove('active'));
+            songitems.forEach(el => el.style.display = "flex");
+            return;
+        }
 
-        if (firstMatch) {
-            firstMatch.closest('.songItem').scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
+        activeFilter = label;
+        document.querySelectorAll('.btn-glass').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        // Filter visible songs
+        songitems.forEach((el, i) => {
+            const song = songs[i];
+            let matches;
+            if (label === "All")         matches = true;
+            else if (label === "Workout") matches = song.mode === "workout";
+            else                          matches = song.lang === label;
+            el.style.display = matches ? "flex" : "none";
+        });
+
+        // Auto-play first song in this filter
+        const firstIndex = songs.findIndex(s => {
+            if (label === "All")         return true;
+            if (label === "Workout")     return s.mode === "workout";
+            return s.lang === label;
+        });
+        if (firstIndex !== -1) {
+            songIndex = firstIndex;
+            masterSongname.innerText = songs[songIndex].songName;
+            audioElement.src = songs[songIndex].filePath;
+            audioElement.currentTime = 0;
+            audioElement.play();
+            masterplay.src = "pause-solid.png";
+            gif.style.opacity = 1;
+            makeAllPlays();
+            const btn = document.getElementById(songIndex.toString());
+            if (btn) btn.src = "pause-solid.png";
         }
     });
 });
