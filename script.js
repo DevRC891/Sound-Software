@@ -7,27 +7,27 @@ let gif=document.getElementById('gif');
 let masterSongname=document.getElementById('masterSongname');
 let songitems=Array.from(document.getElementsByClassName('songItem'));
 let songs=[
-    {songName: "Let Me Love You",filePath: "Songs/letmeloveyou.mp3",coverPath:"Songimages/Letmeloveyou.jpg",lang:"English"},
-    {songName: "Memories",filePath: "Songs/memories.mp3",coverPath:"Songimages/memories.jpg",lang:"English"},
+    {songName: "Let Me Love You",filePath: "Songs/letmeloveyou.mp3",coverPath:"Songimages/Letmeloveyou.jpg",lang:"English",mode:"relax"},
+    {songName: "Memories",filePath: "Songs/memories.mp3",coverPath:"Songimages/memories.jpg",lang:"English",mode:"relax"},
     {songName: "Shape of You",filePath: "Songs/shapeofyou.mp3",coverPath:"Songimages/shapeofyou.jpg",lang:"English"},
-    {songName: "Perfect",filePath: "Songs/perfect.mp3",coverPath:"Songimages/perfect.jpg",lang:"English"},
+    {songName: "Perfect",filePath: "Songs/perfect.mp3",coverPath:"Songimages/perfect.jpg",lang:"English",mode:"relax"},
     {songName: "Believer",filePath: "Songs/believer.mp3",coverPath:"Songimages/believer.jpg",lang:"English",mode:"workout"},
-    {songName: "Night Changes",filePath: "Songs/nightchanges.mp3",coverPath:"Songimages/nightchanges.jpg",lang:"English"},
-    {songName: "Closer",filePath: "Songs/closer.mp3",coverPath:"Songimages/closer.jpg",lang:"English"},
+    {songName: "Night Changes",filePath: "Songs/nightchanges.mp3",coverPath:"Songimages/nightchanges.jpg",lang:"English",mode:"relax"},
+    {songName: "Closer",filePath: "Songs/closer.mp3",coverPath:"Songimages/closer.jpg",lang:"English",mode:"relax"},
     {songName: "A Thousand Years",filePath: "Songs/thousandyears.mp3",coverPath:"Songimages/thousandyears.jpg",lang:"English"},
     {songName: "End of Begining",filePath: "Songs/endofbegin.mp3",coverPath:"Songimages/endofbegining.jpg",lang:"English"},
     {songName: "Lutt Le Gaya",filePath: "Songs/lutlegaya.mp3",coverPath:"Songimages/luttlegaya.jpg",lang:"Hindi",mode:"workout"},
     {songName: "Run down the city - (Monica)",filePath: "Songs/rundownthecity.mp3",coverPath:"Songimages/rundownthecity.jpg",lang:"Hindi",mode:"workout"},
     {songName: "Beedi Jalaile",filePath: "Songs/Beedi.mp3",coverPath:"Songimages/beedi.jpg",lang:"Hindi",mode:"workout"},
-    {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg",lang:"Hindi"},
-    {songName: "Mainu Ishq Tera Lae Dooba",filePath: "Songs/LaeDooba.mp3",coverPath:"Songimages/LaeDooba.jpg",lang:"Hindi"},
-    {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg",lang:"Hindi"},
-    {songName: "Ae Ajnabee",filePath: "Songs/Ae Ajnabee.mp3",coverPath:"Songimages/Ae Ajnabee.jpg",lang:"Hindi"},
+    {songName: "Bairan",filePath: "Songs/Bairan.mp3",coverPath:"Songimages/bairan.jpg",lang:"Hindi",mode:"relax"},
+    {songName: "Mainu Ishq Tera Lae Dooba",filePath: "Songs/LaeDooba.mp3",coverPath:"Songimages/LaeDooba.jpg",lang:"Hindi",mode:"relax"},
+    {songName: "Zalima",filePath: "Songs/Zalima.mp3",coverPath:"Songimages/Zalima.jpg",lang:"Hindi",mode:"relax"},
+    {songName: "Ae Ajnabee",filePath: "Songs/Ae Ajnabee.mp3",coverPath:"Songimages/Ae Ajnabee.jpg",lang:"Hindi",mode:"relax"},
     {songName: "Har Har Gange",filePath: "Songs/Har Har Gange.mp3",coverPath:"Songimages/Har Har Gange.jpg",lang:"Hindi"},
-    {songName: "Arz Kiya Hai",filePath: "Songs/Arz Kiya Hai.mp3",coverPath:"Songimages/Arz Kiya Hai.jpg",lang:"Hindi"},
+    {songName: "Arz Kiya Hai",filePath: "Songs/Arz Kiya Hai.mp3",coverPath:"Songimages/Arz Kiya Hai.jpg",lang:"Hindi",mode:"relax"},
     {songName: "Deva Deva",filePath: "Songs/Deva Deva.mp3",coverPath:"Songimages/Deva Deva.jpg",lang:"Hindi"},
-    {songName: "Aaoge Tum Kabhi",filePath: "Songs/Aaoge Tum Kabhi.mp3",coverPath:"Songimages/Aaoge Tum Kabhi.jpg",lang:"Hindi"},
-    {songName: "Hum Tere Pyar Mein",filePath: "Songs/Hum Tere Pyar Mein.mp3",coverPath:"Songimages/Hum Tere Pyar Mein.jpg",lang:"Hindi"},
+    {songName: "Aaoge Tum Kabhi",filePath: "Songs/Aaoge Tum Kabhi.mp3",coverPath:"Songimages/Aaoge Tum Kabhi.jpg",lang:"Hindi",mode:"relax"},
+    {songName: "Hum Tere Pyar Mein",filePath: "Songs/Hum Tere Pyar Mein.mp3",coverPath:"Songimages/Hum Tere Pyar Mein.jpg",lang:"Hindi",mode:"relax"},
     {songName: "Mila To Marega",filePath: "Songs/Mila To Marega.mp3",coverPath:"Songimages/milatomarega.jpg",lang:"Hindi",mode:"workout"},
     {songName: "Zinda",filePath: "Songs/Zinda.mp3",coverPath:"Songimages/Zinda.jpg",lang:"Hindi",mode:"workout"},
     {songName: "Chak De India",filePath: "Songs/Chakde.mp3",coverPath:"Songimages/Chakde.jpg",lang:"Hindi",mode:"workout"},
@@ -113,7 +113,12 @@ function getNextIndex(from) {
         while (!songs[next].mode || songs[next].mode !== "workout") {
             next = (next + 1) % songs.length;
         }
-    } else if (activeFilter === "Hindi" || activeFilter === "English") {
+    }else if (activeFilter === "Relax") {
+        while (!songs[next].mode || songs[next].mode !== "relax") {
+            next = (next + 1) % songs.length;
+        }
+    }
+     else if (activeFilter === "Hindi" || activeFilter === "English") {
         const lang = songs[from].lang;
         while (songs[next].lang !== lang) {
             next = (next + 1) % songs.length;
@@ -191,6 +196,7 @@ searchInput.addEventListener('input', (e) => {
         let filterMatch;
         if (activeFilter === null || activeFilter === "All") filterMatch = true;
         else if (activeFilter === "Workout") filterMatch = song.mode === "workout";
+        else if (activeFilter === "Relax") filterMatch = song.mode === "relax";
         else filterMatch = song.lang === activeFilter;
 
         // Check if song matches the search query
@@ -224,6 +230,7 @@ document.querySelectorAll('.btn-glass').forEach(button => {
             let matches;
             if (label === "All")         matches = true;
             else if (label === "Workout") matches = song.mode === "workout";
+            else if (label === "Relax")   matches = song.mode === "relax";
             else                          matches = song.lang === label;
             el.style.display = matches ? "flex" : "none";
         });
@@ -232,6 +239,7 @@ document.querySelectorAll('.btn-glass').forEach(button => {
         const firstIndex = songs.findIndex(s => {
             if (label === "All")         return true;
             if (label === "Workout")     return s.mode === "workout";
+            if (label === "Relax")       return s.mode === "relax";
             return s.lang === label;
         });
         if (firstIndex !== -1) {
