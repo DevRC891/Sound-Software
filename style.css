@@ -230,6 +230,7 @@ h1 {
 }
 
 .brand {
+  font-family: 'Orbitron', sans-serif;  /* apply font */
     animation: neonGlow 1.5s ease-in-out infinite alternate;
 }
 
